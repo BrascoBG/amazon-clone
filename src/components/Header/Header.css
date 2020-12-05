@@ -1,0 +1,25 @@
+.header {
+  margin: 0 auto;
+  max-width: 1500px;
+}
+.header__image {
+  width: 100%;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  z-index: -1;
+  margin-bottom: -150px;
+}
+.header__row {
+  display: flex;
+  z-index: 1;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+@media screen and (max-width: 620px) {
+  .header__row {
+    flex-wrap: wrap;
+  }
+  .header__image {
+    margin-bottom: -10px;
+  }
+}
