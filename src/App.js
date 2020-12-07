@@ -3,8 +3,30 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Header from "./components/Header/Header";
 import Checkout from "./components/Checkout/Checkout";
+import Login from "./components/Login/Login";
+import { useStateValue } from "./StateProvider";
+import { useEffect } from "react";
+import { auth } from "./firebase";
 
 function App() {
+  const [, dispatch] = useStateValue();
+
+  useEffect(() => {
+    auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        dispatch({
+          type: "SET_USER",
+          payload: authUser,
+        });
+      } else {
+        dispatch({
+          type: "SET_USER",
+          payload: null,
+        });
+      }
+    });
+  }, [dispatch]);
+
   return (
     <Router>
       <Switch>
@@ -14,7 +36,7 @@ function App() {
         </Route>
       </Switch>
       <Route path="/login">
-        <h1>Login</h1>
+        <Login />
       </Route>
       <Route exact path="/">
         <Navbar />
