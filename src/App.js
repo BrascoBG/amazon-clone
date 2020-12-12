@@ -12,7 +12,7 @@ function App() {
   const [, dispatch] = useStateValue();
 
   useEffect(() => {
-    auth.onAuthStateChanged((authUser) => {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         dispatch({
           type: "SET_USER",
@@ -25,6 +25,9 @@ function App() {
         });
       }
     });
+    return () => {
+      unsubscribe();
+    }
   }, [dispatch]);
 
   return (
