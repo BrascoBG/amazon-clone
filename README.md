@@ -1,6 +1,6 @@
 # Amazon-Clone E-Commerce SPA
 
-## Built with ReactJS, ContextAPI
+## ReactJS, ContextAPI, Firebase Auth
 
 ### Screenshots
 
